@@ -1,0 +1,28 @@
+:root {
+  /* Brand */
+  --green: #2D7A3E;
+  --green-dark: #246332;
+  --green-light: #E8F5EA;
+  --cream: #FAF8F3;
+  --white: #FFFFFF;
+  /* Accents */
+  --red: #C0392B;
+  --gold: #E5A000;
+  --yellow-light: #FFF4D6;
+  /* Text */
+  --text-heading: #1A1A1A;
+  --text-body: #374151;
+  --text-muted: #6B7280;
+  /* Borders / soft bg */
+  --border: #E5E7EB;
+  --border-strong: #D1D5DB;
+  --bg-soft: #F3F4F6;
+  /* Shape */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+  --max-width: 1280px;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
