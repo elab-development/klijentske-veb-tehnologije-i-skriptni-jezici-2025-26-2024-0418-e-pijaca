@@ -30,8 +30,7 @@ moguće je pretraživati, filtrirati i naručiti kroz 4-koračni proces kupovine
 ```bash
 npm install
 npm run dev      # razvojni server na http://localhost:5173
-npm run build    # produkciona optimizacija u dist/
-npm run preview  # prikaz produkcionog builda
+npm run preview  # prikaz builda
 ```
 
 ## Struktura
@@ -50,9 +49,9 @@ src/
 ## Tim
 | Student | Indeks | Oblast |
 |---|---|---|
-| Nikola Marković | 2024/0560 | scaffold, dizajn sistem, ruting, shared UI, početna |
-| Jovan Luković | 2024/0418 | katalog, spisak i pojedinačni proizvod |
-| Iva Krstev | 2024/0481 | korpa i naručivanje, nalozi, konteksti, hooks |
+| Jovan Luković | 2024/0418 | stranica proizvodi, stranica pojedinacnih proizvoda |
+| Nikola Marković | 2024/0560 | stranica o informacijama korisnika, stranica korpe korisnika |
+| Iva Krstev | 2024/0481 | logovanje korisnika, forma za nov nalog, pocetna stranica prodavnice |
 
 ## Repo
-`https://github.com/elab-development/klijentske-veb-tehnologije-2024-2024-0560-e-pijaca`
+`https://github.com/elab-development/klijentske-veb-tehnologije-i-skriptni-jezici-2025-26-2024-0418-e-pijaca.git`
