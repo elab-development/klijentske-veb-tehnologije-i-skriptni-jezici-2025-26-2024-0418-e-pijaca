@@ -198,17 +198,28 @@
 .review__text { margin-top:8px; color:var(--text-body); line-height:1.5; }
 
 /* ===== Auth (Login/Register) ===== */
-.auth { display:flex; justify-content:center; padding:48px 24px; }
-.auth__card { background:#fff; border:1.5px solid var(--border); border-radius:var(--radius-lg); padding:32px; width:100%; max-width:420px; display:flex; flex-direction:column; gap:16px; box-shadow:var(--shadow-md); }
-.auth__card--wide { max-width:560px; }
-.auth__title { font-size:1.8rem; }
+.auth { display:grid; grid-template-columns:2fr 3fr; min-height:100vh; }
+.auth__hero { background:var(--green); color:#fff; padding:64px 56px; display:flex; flex-direction:column; justify-content:center; gap:24px; }
+.auth__hero h2, .auth__hero p, .auth__hero li, .auth__hero div { color:#fff; }
+.auth__hero-logo { font-size:1.3rem; font-weight:700; }
+.auth__hero-title { font-size:2.4rem; line-height:1.2; margin:0; }
+.auth__hero-desc { font-size:.95rem; opacity:.9; line-height:1.5; max-width:380px; }
+.auth__hero-features { list-style:none; padding:0; margin:16px 0 0; display:flex; flex-direction:column; gap:10px; font-size:.9rem; }
+.auth__form-wrap { display:flex; align-items:center; justify-content:center; padding:48px 24px; }
+.auth__card { background:#fff; width:100%; max-width:420px; display:flex; flex-direction:column; gap:16px; }
+.auth_card--reg { max-width:560px; }
+.auth__title { font-size:1.8rem; margin:0; }
 .auth__sub { margin-top:-8px; }
 .auth__row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.auth__options { display:flex; justify-content:space-between; align-items:center; font-size:.85rem; margin-top:-8px; }
+.auth__checkbox { display:flex; align-items:center; gap:6px; }
+.auth__forgot { color:var(--green); font-weight:600; text-decoration:none; }
 .auth__submit { margin-top:8px; }
+.auth__social { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.auth__social-btn { padding:10px; border:1.5px solid var(--border); border-radius:var(--radius-lg); background:#fff; cursor:pointer; font-size:.9rem; }
 .auth__switch { text-align:center; font-size:.9rem; }
 .auth__switch a { color:var(--green); font-weight:600; }
 .auth__demo { text-align:center; font-size:.82rem; }
-
 /* ===== Profile ===== */
 .profile__head { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:24px; }
 .profile__avatar { width:64px; height:64px; border-radius:50%; background:var(--green); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.5rem; font-weight:700; }
