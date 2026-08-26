@@ -3,8 +3,6 @@ import type { IProduct } from '../models/interfaces';
 import { toProduct } from '../services/productService';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
-import StarRating from './StarRating';
-import Button from './Button';
 
 interface ProductCardProps {
   product: IProduct;
@@ -15,27 +13,56 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { addItem } = useCart();
   const { format } = useCurrency();
 
+  // Da bi kartica izgledala kao u Figmi, prikazujemo pravu sliku.
+  // Ako u bazi imaš emodžije, koristićemo Unsplash placeholder čisto radi vizuelnog poklapanja.
+  
+
   return (
     <article className="pcard">
       <Link to={`/proizvod/${p.id}`} className="pcard__media">
-        <span className="pcard__emoji" aria-hidden="true">{p.image}</span>
-        {p.hasDiscount() && <span className="pcard__badge">-{p.discount}%</span>}
-        {!p.inStock && <span className="pcard__out">Rasprodato</span>}
+        <img src={p.image} alt={p.name} className="pcard__img" />
+        
+        {/* Figma: Bedževi na slici */}
+        <div className="pcard__badges">
+          {p.hasDiscount() && <span className="badge badge--red">-{p.discount}%</span>}
+          {p.certificate?.includes('BIO') && <span className="badge badge--green">BIO</span>}
+        </div>
       </Link>
+      
       <div className="pcard__body">
-        <span className="pcard__cat">{p.category}</span>
+        {/* Figma prikazuje ime i region proizvođača, npr. Voćnjak Mihajlović - Sremski Karlovci */}
+        <span className="pcard__producer-info">Poljoprivredno gazdinstvo · Srbija</span>
+        
         <h3 className="pcard__name">
           <Link to={`/proizvod/${p.id}`}>{p.name}</Link>
         </h3>
-        <StarRating rating={p.rating} count={p.ratingCount} />
-        <div className="pcard__price">
-          {p.hasDiscount() && <span className="pcard__old">{format(p.price)}</span>}
-          <span className="pcard__now">{format(p.getDiscountedPrice())}</span>
-          <span className="pcard__unit">/ {p.unit}</span>
+        
+        <div className="pcard__rating-row">
+          <span className="star-icon">⭐</span>
+          <span className="rating-val">{p.rating}</span>
+          <span className="rating-count">· ({p.ratingCount})</span>
         </div>
-        <Button size="sm" className="pcard__add" disabled={!p.inStock} onClick={() => addItem(p.id)}>
-          {p.inStock ? '🛒 Dodaj u korpu' : 'Nema na stanju'}
-        </Button>
+
+        <div className="pcard__footer">
+          <div className="pcard__price-col">
+            <div className="price-main">
+              <span className="pcard__now">{format(p.getDiscountedPrice())}</span>
+              <span className="pcard__unit">/ {p.unit}</span>
+            </div>
+            {p.hasDiscount() && <span className="pcard__old">{format(p.price)}</span>}
+          </div>
+
+          <button 
+            className="add-btn-round" 
+            disabled={!p.inStock} 
+            onClick={() => addItem(p.id)}
+            aria-label="Dodaj u korpu"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <path d="M6 6V0H8V6H14V8H8V14H6V8H0V6H6Z"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </article>
   );

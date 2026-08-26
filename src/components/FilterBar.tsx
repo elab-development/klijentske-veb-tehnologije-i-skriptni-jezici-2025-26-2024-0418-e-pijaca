@@ -28,53 +28,86 @@ interface FilterBarProps {
 
 export default function FilterBar({ value, onChange, onApply, onReset }: FilterBarProps) {
   const set = (patch: Partial<FilterState>) => onChange({ ...value, ...patch });
+
+  // Pomoćna funkcija za pilule aktivnih filtera
+  const removeFilter = (key: keyof FilterState) => {
+    set({ [key]: initialFilters[key] });
+  };
+
   return (
     <aside className="filter">
-      <h3 className="filter__title">Filteri</h3>
-
-      <div className="filter__group">
-        <label className="filter__label">Kategorija</label>
-        <select className="filter__select" value={value.category} onChange={(e) => set({ category: e.target.value as Category | 'Sve' })}>
-          <option value="Sve">Sve kategorije</option>
-          {categories.map((c) => (
-            <option key={c.key} value={c.key}>{c.emoji} {c.label}</option>
-          ))}
-        </select>
+      <div className="filter__head">
+        <h3 className="filter__title">Filteri</h3>
+        <button className="filter__reset" onClick={onReset}>Resetuj</button>
       </div>
 
-      <div className="filter__group">
-        <label className="filter__label">Cena (RSD)</label>
-        <div className="filter__row">
-          <input type="number" min={0} className="filter__num" value={value.minPrice || ''} placeholder="Od" onChange={(e) => set({ minPrice: Number(e.target.value) || 0 })} />
-          <input type="number" min={0} className="filter__num" value={value.maxPrice || ''} placeholder="Do" onChange={(e) => set({ maxPrice: Number(e.target.value) || 0 })} />
+      {/* Aktivni filteri (Pilule) */}
+      <div className="filter__active-tags">
+        <span className="filter__subtitle">Aktivni filteri</span>
+        <div className="filter__tags">
+          {value.category !== 'Sve' && (
+            <span className="tag">{value.category} <button onClick={() => removeFilter('category')}>×</button></span>
+          )}
+          {value.certificate !== 'Sve' && (
+            <span className="tag">BIO <button onClick={() => removeFilter('certificate')}>×</button></span>
+          )}
+          {value.maxPrice > 0 && (
+            <span className="tag">do {value.maxPrice} RSD <button onClick={() => removeFilter('maxPrice')}>×</button></span>
+          )}
         </div>
       </div>
 
+      {/* Kategorije */}
       <div className="filter__group">
-        <label className="filter__label">Region</label>
-        <select className="filter__select" value={value.region} onChange={(e) => set({ region: e.target.value })}>
-          <option value="Sve">Svi regioni</option>
-          {regions.map((r) => <option key={r} value={r}>{r}</option>)}
-        </select>
+        <label className="filter__label">Kategorija</label>
+        <div className="filter__list">
+          {categories.map((c) => (
+            <label className="custom-checkbox" key={c.key}>
+              <input 
+                type="checkbox" 
+                checked={value.category === c.key} 
+                onChange={() => set({ category: value.category === c.key ? 'Sve' : c.key })} 
+              />
+              <span className="checkmark"></span>
+              <span className="checkbox-text">{c.label}</span>
+              {/* Opciono: mock broj proizvoda (184) */}
+              <span className="checkbox-count">(184)</span> 
+            </label>
+          ))}
+        </div>
       </div>
 
+      {/* Cena */}
       <div className="filter__group">
-        <label className="filter__label">Sertifikat</label>
-        <select className="filter__select" value={value.certificate} onChange={(e) => set({ certificate: e.target.value })}>
-          <option value="Sve">Svi</option>
-          {certificates.map((c) => <option key={c} value={c}>{c}</option>)}
-        </select>
+        <label className="filter__label">Cena (RSD)</label>
+        <div className="price-slider-visual">
+           <div className="price-slider-track"></div>
+        </div>
+        <div className="filter__row">
+          <input type="number" min={0} className="filter__num" value={value.minPrice || ''} placeholder="100 RSD" onChange={(e) => set({ minPrice: Number(e.target.value) || 0 })} />
+          <input type="number" min={0} className="filter__num" value={value.maxPrice || ''} placeholder="800 RSD" onChange={(e) => set({ maxPrice: Number(e.target.value) || 0 })} />
+        </div>
       </div>
 
-      <label className="filter__check">
-        <input type="checkbox" checked={value.onlyDiscount} onChange={(e) => set({ onlyDiscount: e.target.checked })} />
-        Samo proizvodi na akciji
-      </label>
-
-      <div className="filter__actions">
-        <button className="btn btn--primary btn--sm" onClick={onApply}>Primeni filtere</button>
-        <button className="btn btn--ghost btn--sm" onClick={onReset}>Resetuj</button>
+      {/* Region */}
+      <div className="filter__group">
+        <label className="filter__label">Region proizvođača</label>
+        <div className="filter__list">
+          {regions.map((r) => (
+            <label className="custom-checkbox" key={r}>
+              <input 
+                type="checkbox" 
+                checked={value.region === r} 
+                onChange={() => set({ region: value.region === r ? 'Sve' : r })} 
+              />
+              <span className="checkmark"></span>
+              <span className="checkbox-text">{r}</span>
+            </label>
+          ))}
+        </div>
       </div>
+
+      <button className="btn btn--primary btn--full" onClick={onApply}>Primeni filtere</button>
     </aside>
   );
 }
