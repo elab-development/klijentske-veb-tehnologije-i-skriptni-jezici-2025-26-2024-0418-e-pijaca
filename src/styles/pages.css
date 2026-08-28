@@ -238,49 +238,653 @@
 .status--u-obradi { background:var(--bg-soft); color:var(--text-muted); }
 
 /* ===== Cart & checkout ===== */
-.cart__title { font-size:1.8rem; margin-bottom:20px; }
-.stepper { display:flex; list-style:none; gap:8px; margin-bottom:28px; flex-wrap:wrap; }
-.stepper__step { display:flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; background:var(--bg-soft); font-size:.88rem; color:var(--text-muted); }
-.stepper__step.is-active { background:var(--green); color:#fff; }
-.stepper__step.is-done { background:var(--green-light); color:var(--green-dark); }
-.stepper__num { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:#fff; color:var(--green); font-size:.78rem; font-weight:700; }
-.stepper__step.is-active .stepper__num { background:rgba(255,255,255,.3); color:#fff; }
-.cart__body { display:grid; grid-template-columns:1fr 320px; gap:24px; align-items:start; }
-.cart__main { min-width:0; }
-.cart__group { background:#fff; border:1.5px solid var(--border); border-radius:var(--radius-lg); padding:16px; margin-bottom:16px; }
-.cart__group-head { font-weight:700; padding-bottom:12px; margin-bottom:12px; border-bottom:1px solid var(--border); }
-.cart__item { display:grid; grid-template-columns:auto 1fr auto auto auto; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); }
-.cart__item:last-child { border-bottom:none; }
-.cart__item-emoji { font-size:2rem; }
-.cart__item-info { display:flex; flex-direction:column; gap:2px; min-width:0; }
-.cart__item-name { font-weight:600; color:var(--text-heading); }
-.cart__item-name:hover { color:var(--green); }
-.cart__item-total { font-weight:800; color:var(--green-dark); white-space:nowrap; }
-.cart__remove { background:none; border:none; cursor:pointer; font-size:1.1rem; padding:4px; }
-.cart__remove:hover { opacity:.6; }
-.cart__actions { display:flex; justify-content:space-between; gap:12px; margin-top:16px; flex-wrap:wrap; }
-.delivery-form { display:flex; flex-direction:column; gap:14px; margin:16px 0; }
-.delivery-form .field__input { resize:vertical; }
+.cart-screen-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px 64px 24px;
+}
 
-/* summary */
-.cart__summary { background:#fff; border:1.5px solid var(--border); border-radius:var(--radius-lg); padding:20px; position:sticky; top:84px; display:flex; flex-direction:column; gap:12px; }
-.cart__summary h3 { font-size:1.1rem; padding-bottom:12px; border-bottom:1px solid var(--border); }
-.summary-row { display:flex; justify-content:space-between; font-size:.92rem; padding:4px 0; }
-.summary-row--discount { color:var(--green); }
-.summary-row--total { border-top:1.5px solid var(--border); margin-top:8px; padding-top:12px; font-weight:800; font-size:1.15rem; color:var(--text-heading); }
-.promo { display:flex; flex-direction:column; gap:6px; margin-top:8px; padding-top:12px; border-top:1px solid var(--border); }
-.promo__row { display:flex; gap:8px; }
-.cart__hint { font-size:.82rem; }
+/* Stepper Track on top */
+.figma-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.figma-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.figma-step__num {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: #E5E7EB;
+  color: #6B7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.figma-step.is-active .figma-step__num {
+  background: #2E7D32;
+  color: #FFFFFF;
+}
+.figma-step.is-done .figma-step__num {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+.figma-step__labels {
+  display: flex;
+  flex-direction: column;
+}
+.figma-step__sub {
+  font-size: 0.72rem;
+  color: #6B7280;
+  line-height: 1.1;
+}
+.figma-step__main {
+  font-size: 0.85rem;
+  color: #374151;
+  font-weight: 700;
+}
+.figma-step.is-active .figma-step__main {
+  color: #111827;
+}
+.figma-step__line {
+  width: 48px;
+  height: 1.5px;
+  background: #E5E7EB;
+  margin-left: 8px;
+}
 
-/* payment + confirm */
-.payment { display:flex; flex-direction:column; gap:10px; margin:16px 0; }
-.payment__option { display:flex; align-items:center; gap:10px; padding:14px; border:1.5px solid var(--border-strong); border-radius:var(--radius-md); cursor:pointer; }
-.payment__option.is-active { border-color:var(--green); background:var(--green-light); }
-.confirm { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin:16px 0; }
-.confirm__block { background:var(--bg-soft); border-radius:var(--radius-md); padding:16px; }
-.confirm__block h4 { margin-bottom:8px; }
-.confirm__block p { font-size:.88rem; line-height:1.6; }
+/* Main Header */
+.figma-cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.figma-cart-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 4px 0;
+}
+.figma-cart-meta {
+  font-size: 0.9rem;
+  color: #6B7280;
+  margin: 0;
+}
+.figma-continue-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  color: #374151;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.figma-continue-btn:hover {
+  background: #F9FAFB;
+  border-color: #9CA3AF;
+}
 
+/* Layout Grid */
+.figma-cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 28px;
+  align-items: start;
+}
+.figma-cart-main {
+  min-width: 0;
+}
+.figma-cart-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Producer Card with Figma background colors */
+.figma-producer-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+/* Zaglavlje proizvodjaca - svetlo zelena pozadina kao na slici */
+.figma-producer-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: #EBF6EE;
+  border-bottom: 1px solid #DDF0E2;
+}
+.figma-producer-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #2E7D32;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.figma-producer-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.figma-producer-info strong {
+  font-size: 0.95rem;
+  color: #111827;
+}
+.figma-producer-info span {
+  font-size: 0.8rem;
+  color: #4B5563;
+}
+.figma-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #FFFFFF;
+  color: #2E7D32;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #C8E6C9;
+}
+
+/* Products in Card */
+.figma-products-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  background: #FFFFFF;
+}
+.figma-cart-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #F3F4F6;
+}
+.figma-cart-item:last-child {
+  border-bottom: none;
+}
+.figma-item-img-box {
+  width: 72px;
+  height: 72px;
+  min-width: 72px;
+  max-width: 72px;
+  max-height: 72px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #F3F4F6;
+  flex-shrink: 0;
+}
+.figma-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.figma-item-emoji {
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.figma-item-details {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.figma-item-name {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #111827;
+  text-decoration: none;
+}
+.figma-item-name:hover {
+  color: #2E7D32;
+}
+.figma-item-package {
+  font-size: 0.82rem;
+  color: #6B7280;
+}
+.figma-item-badges {
+  display: flex;
+  gap: 6px;
+  margin-top: 2px;
+}
+.figma-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.figma-badge--bio {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+.figma-badge--fresh {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+/* Qty pill */
+.figma-qty-ctrl {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #FFFFFF;
+}
+.figma-qty-btn {
+  width: 32px;
+  height: 32px;
+  background: #FFFFFF;
+  border: none;
+  font-size: 1rem;
+  color: #374151;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.figma-qty-btn:hover {
+  background: #F3F4F6;
+}
+.figma-qty-val {
+  min-width: 36px;
+  text-align: center;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Price & Trash side */
+.figma-item-price-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  min-width: 100px;
+}
+.figma-item-total-price {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #111827;
+}
+.figma-item-remove {
+  background: none;
+  border: none;
+  color: #9CA3AF;
+  font-size: 0.78rem;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.figma-item-remove:hover {
+  color: #EF4444;
+}
+
+/* Donji deo za dostavu od proizvodjaca i medjuzbir - svetla pozadina */
+.figma-producer-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #FAF9F5;
+  border-top: 1px solid #ECEAE1;
+  font-size: 0.85rem;
+}
+.figma-delivery-info {
+  color: #4B5563;
+  font-size: 0.82rem;
+}
+.figma-group-subtotal {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.figma-group-subtotal span {
+  color: #6B7280;
+  font-size: 0.8rem;
+}
+.figma-group-subtotal strong {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+/* Step Cards */
+.figma-step-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+.figma-step-card h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 20px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #F3F4F6;
+}
+
+/* Delivery Form Styling */
+.delivery-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+}
+.field__input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  color: #111827;
+  background: #FFFFFF;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.field__input:focus {
+  border-color: #2E7D32;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+}
+.delivery-form .auth__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Payment Options */
+.payment {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.payment__option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 10px;
+  background: #FAFAFA;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+  transition: all 0.15s;
+}
+.payment__option:hover {
+  border-color: #2E7D32;
+  background: #F9FAFB;
+}
+.payment__option.is-active {
+  border-color: #2E7D32;
+  background: #F0FDF4;
+  color: #166534;
+}
+.payment__option input[type="radio"] {
+  accent-color: #2E7D32;
+  width: 18px;
+  height: 18px;
+}
+
+/* Confirm Blocks */
+.confirm {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.confirm__block {
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  padding: 16px;
+}
+.confirm__block h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 10px 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #E5E7EB;
+}
+.confirm__block p {
+  font-size: 0.85rem;
+  color: #374151;
+  line-height: 1.5;
+  margin: 4px 0;
+}
+
+/* Step Action Buttons */
+.cart__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #F3F4F6;
+  flex-wrap: wrap;
+}
+
+/* Right Sidebar */
+.figma-cart-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 84px;
+}
+
+/* Summary Box */
+.figma-summary-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.figma-summary-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 16px 0;
+}
+.figma-summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: #4B5563;
+  margin-bottom: 10px;
+}
+.figma-summary-row strong {
+  font-weight: 600;
+  color: #111827;
+}
+.figma-summary-row--discount span,
+.figma-summary-row--discount strong {
+  color: #2E7D32;
+  font-weight: 700;
+}
+.figma-summary-divider {
+  height: 1px;
+  background: #E5E7EB;
+  margin: 14px 0;
+}
+.figma-summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+.figma-summary-total span {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+}
+.figma-total-amount {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+/* Delivery Estimate Banner */
+.figma-delivery-banner {
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.figma-delivery-banner-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.figma-delivery-banner strong {
+  font-size: 0.85rem;
+  color: #065F46;
+  display: block;
+}
+.figma-delivery-banner p {
+  font-size: 0.78rem;
+  color: #047857;
+  margin: 2px 0 0 0;
+}
+
+/* Checkout Button */
+.figma-btn-checkout {
+  width: 100%;
+  padding: 12px;
+  background: #2E7D32;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 14px;
+  transition: background 0.15s;
+}
+.figma-btn-checkout:hover {
+  background: #1B5E20;
+}
+
+/* Payment Card */
+.figma-payment-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 18px;
+}
+.figma-payment-card h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 10px 0;
+}
+.figma-payment-pills {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.figma-pill {
+  background: #F3F4F6;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #4B5563;
+}
+.figma-payment-card p {
+  font-size: 0.78rem;
+  color: #6B7280;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Trust Card */
+.figma-trust-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.figma-trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.figma-trust-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+.figma-trust-item strong {
+  font-size: 0.82rem;
+  color: #111827;
+  display: block;
+}
+.figma-trust-item p {
+  font-size: 0.75rem;
+  color: #6B7280;
+  margin: 2px 0 0 0;
+}
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
   .marketplace__inner { flex-direction:column; }
