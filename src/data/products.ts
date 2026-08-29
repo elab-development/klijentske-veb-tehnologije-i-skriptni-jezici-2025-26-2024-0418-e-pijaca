@@ -10,7 +10,7 @@ export const producers: IProducer[] = [
 ];
 
 export const products: IProduct[] = [
-  { id: 1, name: 'Jagode sa Fruške gore', category: 'Voće', price: 420, discount: 10, unit: '500g', producerId: 1, rating: 4.9, ratingCount: 267, soldCount: 1420, image: 'https://www.strongnature.rs/uploads/news/images/zasto-treba-da-jedete-jagode-93.webp', description: 'Sveže ubrane jagode sa porodičnih plantaža na obroncima Fruške gore. Slatke, sočne i punog ukusa.', inStock: true, certificate: 'Srpski proizvod', sorta: 'Albion', pakovanje: '500g posuda', berba: 'Jun 2026', rok: '5 dana od berbe' },
+  { id: 1, name: 'Jagode sa Fruške gore', category: 'Voće', price: 580, discount: 17, unit: '500g', producerId: 1, rating: 4.9, ratingCount: 267, soldCount: 1420, image: 'https://www.strongnature.rs/uploads/news/images/zasto-treba-da-jedete-jagode-93.webp', description: 'Sveže ubrane jagode sa porodičnih plantaža na obroncima Fruške gore. ', inStock: true, certificate: 'BIO sertifikat', sorta: 'Klerry, krupna', pakovanje: 'PVC korpa 500g', berba: '9. maj 2026.', rok: '5-7 dana u frižideru', ratingBreakdown: [89, 8, 2, 1, 0] },
   { id: 2, name: 'Maline Arilje - ekološke', category: 'Voće', price: 550, unit: '500g', producerId: 5, rating: 4.9, ratingCount: 198, soldCount: 1340, image: 'https://lepotaizdravlje.rs/wp-content/uploads/2020/07/maline-voce-zdrava-ishrana-Getty-2.jpg', description: 'Aromatične maline iz Arilja, poznate širom Evrope. Bez pesticida.', inStock: true, certificate: 'Organska', sorta: 'Tulameen', pakovanje: '500g posuda', berba: 'Jul 2026', rok: '3 dana od berbe' },
   { id: 3, name: 'Šljive - domaće', category: 'Voće', price: 180, unit: 'kg', producerId: 1, rating: 4.7, ratingCount: 84, soldCount: 560, image: 'https://www.dobrojutro.co.rs/wp-content/uploads/2020/06/1b-AdobeStock_209627105.jpg', description: 'Zrele šljive iz voćnjaka Mihajlović. Idealne za pekmez i slatko.', inStock: true, certificate: 'Srpski proizvod', sorta: 'Čačanska rodna', pakovanje: 'Po kg', berba: 'Avgust 2026', rok: '7 dana' },
   { id: 4, name: 'Paradajz - baštenski', category: 'Povrće', price: 160, unit: 'kg', producerId: 4, rating: 4.6, ratingCount: 142, soldCount: 1750, image: 'https://cdn.agroklub.com/upload/images/text/thumb/depositphotos-116685160-l-2015-1-880x495-1.webp', description: 'Domaći paradajz iz Zemuna, ubran zrelo. Punog ukusa, za salatu i sos.', inStock: true, certificate: 'Srpski proizvod', sorta: 'Volovsko srce', pakovanje: 'Po kg', berba: 'Jul 2026', rok: '10 dana' },
@@ -25,9 +25,9 @@ export const products: IProduct[] = [
 ];
 
 export const reviews: IReview[] = [
-  { id: 1, productId: 1, author: 'Marija P.', rating: 5, date: '2026-06-20', text: 'Najbolje jagode koje sam jela! Sveže i slatke, dostava sutradan.' },
-  { id: 2, productId: 1, author: 'Stefan N.', rating: 5, date: '2026-06-18', text: 'Odličan ukus, vidljivo da je iz pravog voćnjaka. Hoću opet.' },
-  { id: 3, productId: 1, author: 'Ana K.', rating: 4, date: '2026-06-15', text: 'Vrlo ukusne, samo bih volela veće pakovanje.' },
+  { id: 1, productId: 1, author: 'Ana Jovanović', rating: 5, date: 'pre 3 dana', text: 'Najbolje jagode ove sezone. Stigle su u savršenom stanju, krupne i slatke.' },
+  { id: 2, productId: 1, author: 'Stefan Petrović', rating: 5, date: 'pre 1 nedelju', text: 'Pravi domaći ukus. Dete ih obožava — prvi put je pojede u tako velikoj količini.' },
+  { id: 3, productId: 1, author: 'Milica Đorđević', rating: 4, date: 'pre 2 nedelje', text: 'Odlične, samo malo sitnije od očekivanja. ' },
   { id: 4, productId: 9, author: 'Petar L.', rating: 5, date: '2026-06-10', text: 'Pravi med, ne kao iz prodavnice. Oseti se bagrem.' },
 ];
 

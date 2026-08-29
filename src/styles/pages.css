@@ -157,25 +157,400 @@
 }
 
 /* ===== Product detail ===== */
-.detail__grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
-.detail__gallery { display:flex; flex-direction:column; gap:12px; }
-.detail__main-img { background:var(--green-light); border-radius:var(--radius-lg); display:flex; align-items:center; justify-content:center; font-size:9rem; padding:48px; min-height:320px; }
-.detail__thumbs { display:flex; gap:8px; }
-.detail__thumb { width:64px; height:64px; background:var(--bg-soft); border:1.5px solid var(--border); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; font-size:1.6rem; cursor:pointer; }
-.detail__thumb.is-active { border-color:var(--green); background:var(--green-light); }
-.detail__info { display:flex; flex-direction:column; gap:14px; }
-.detail__title { font-size:1.9rem; line-height:1.2; }
-.detail__meta { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-.detail__producer { font-size:.95rem; }
-.detail__price { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; padding:12px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-.detail__now { font-size:2rem; font-weight:800; color:var(--green-dark); }
-.detail__add { margin-top:4px; }
-.detail__cert { color:var(--gold); font-weight:600; }
-.detail__desc { line-height:1.6; color:var(--text-body); }
-.detail__specs { list-style:none; display:flex; flex-direction:column; gap:10px; }
-.detail__specs li { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); }
-.detail__specs li span:first-child { color:var(--text-muted); }
+.detail__grid { 
+  display: grid !important; 
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; 
+  gap: 48px; 
+  align-items: start; 
+}
 
+/* --- Galerija --- */
+.detail__gallery { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 16px;
+}
+
+.detail__main-img { 
+  position: relative;
+  width: 100%; 
+  aspect-ratio: 1 / 1; 
+  background: #F3F4F6; 
+  border-radius: 12px; 
+  overflow: hidden; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  border: 1px solid #E5E7EB;
+}
+
+.detail__main-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+
+.detail__badges {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+/* Figma stilizovane numerisane thumbnail kartice */
+.detail__thumbs { 
+  display: flex; 
+  gap: 12px; 
+}
+
+.detail__thumb { 
+  width: 72px; 
+  height: 72px; 
+  background: #FFFFFF; 
+  border: 1.5px solid #E5E7EB; 
+  border-radius: 8px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #374151;
+  cursor: pointer; 
+  transition: all 0.15s ease;
+}
+
+.detail__thumb:hover {
+  border-color: #9CA3AF;
+  background: #F9FAFB;
+}
+
+.detail__thumb.is-active { 
+  border-color: #2E7D32; 
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+/* --- Desna strana (Informacije) --- */
+.detail__info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0; 
+}
+
+.detail__producer-tag { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  font-size: 0.85rem; 
+  color: #4B5563;
+}
+
+.detail__producer-avatar { 
+  background: #2E7D32; 
+  color: #fff; 
+  width: 24px; 
+  height: 24px; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 0.6rem; 
+  font-weight: bold; 
+}
+
+.detail__title { 
+  font-size: 2.1rem; 
+  margin: 0; 
+  line-height: 1.2; 
+  color: #111827;
+  font-weight: 800;
+}
+
+.detail__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #6B7280;
+}
+
+/* Cena - svetlozeleni boks sa finom ivicom */
+.detail__price-box { 
+  background: #E8F5E9; 
+  padding: 20px; 
+  border-radius: 12px; 
+  border: 1px solid #C8E6C9;
+  margin: 4px 0; 
+}
+
+.detail__price-main { 
+  display: flex; 
+  align-items: baseline; 
+  gap: 12px; 
+  flex-wrap: wrap; 
+}
+
+.detail__now { 
+  font-size: 2.2rem; 
+  font-weight: 800; 
+  color: #1B5E20; 
+}
+
+.detail__old { 
+  font-size: 1.1rem; 
+  text-decoration: line-through; 
+  color: #6B7280; 
+}
+
+.detail__savings { 
+  background: #DC2626; 
+  color: #fff; 
+  padding: 3px 8px; 
+  border-radius: 4px; 
+  font-size: 0.75rem; 
+  font-weight: 700; 
+}
+
+.detail__price-tax { 
+  font-size: 0.78rem; 
+  color: #4B5563; 
+  margin-top: 8px; 
+}
+
+.detail__short-desc { 
+  font-size: 0.95rem; 
+  color: #374151; 
+  margin-bottom: 8px; 
+  line-height: 1.6; 
+}
+
+.detail__short-desc strong { 
+  display: block; 
+  margin-bottom: 6px; 
+  color: #111827; 
+  font-size: 1rem;
+}
+
+/* Tanka linija i siva slova za tabelu specifikacija */
+.detail__specs-table { 
+  list-style: none; 
+  padding: 0; 
+  margin: 0 0 24px 0; 
+  border-top: 1px solid #E5E7EB; 
+}
+
+.detail__specs-table li { 
+  display: flex; 
+  justify-content: space-between; 
+  padding: 12px 0; 
+  border-bottom: 1px solid #E5E7EB; 
+  font-size: 0.9rem; 
+}
+
+.detail__specs-table li span { 
+  color: #6B7280; 
+}
+
+.detail__specs-table li strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+.detail__actions { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  margin-bottom: 24px; 
+}
+
+.detail__add-btn { 
+  flex: 1; 
+  background: #2E7D32 !important; 
+  color: #fff !important; 
+  font-weight: 700;
+}
+
+.detail__icon-btn { 
+  width: 48px; 
+  height: 48px; 
+  flex-shrink: 0; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  border: 1.5px solid #D1D5DB; 
+  border-radius: 8px; 
+  background: #fff; 
+  cursor: pointer; 
+  font-size: 1.2rem; 
+  color: #374151;
+  transition: background 0.15s;
+}
+
+.detail__icon-btn:hover {
+  background: #F3F4F6;
+}
+
+/* Dostava info sekcija sa tankim razdvajačem */
+.detail__delivery-info { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 16px; 
+  padding-top: 24px; 
+  border-top: 1px solid #E5E7EB; 
+}
+
+.delivery-item { 
+  display: flex; 
+  align-items: flex-start; 
+  gap: 12px; 
+}
+
+.delivery-icon { 
+  font-size: 1.4rem; 
+}
+
+.delivery-item strong { 
+  display: block; 
+  font-size: 0.88rem; 
+  color: #111827; 
+}
+
+.delivery-item p { 
+  margin: 2px 0 0; 
+  font-size: 0.78rem; 
+  color: #6B7280; 
+}
+
+/* --- Donji deo (Recenzije kartice) --- */
+.detail__bottom { 
+  margin-top: 48px; 
+}
+
+.detail__reviews-layout { 
+  display: grid; 
+  grid-template-columns: 280px 1fr; 
+  gap: 48px; 
+  align-items: start; 
+}
+
+.reviews-score { 
+  font-size: 4.5rem; 
+  font-weight: 800; 
+  line-height: 1; 
+  margin-bottom: 8px; 
+  color: #111827; 
+}
+
+.write-review-btn { 
+  margin-top: 24px; 
+  width: 100%; 
+}
+
+/* --- Grafikon raspodele ocena --- */
+.rating-breakdown {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rating-breakdown__row {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  align-items: center;
+  gap: 8px;
+}
+
+.rating-breakdown__label {
+  font-size: 0.78rem;
+  color: #6B7280;
+}
+
+.rating-breakdown__bar {
+  height: 8px;
+  background: #F3F4F6;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.rating-breakdown__fill {
+  height: 100%;
+  background: #FBBF24;
+  border-radius: 999px;
+}
+
+.rating-breakdown__pct {
+  font-size: 0.78rem;
+  color: #6B7280;
+  text-align: right;
+}
+
+/* --- Opis / Proizvođač / Pitanja tabovi --- */
+.detail__full-desc p {
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.detail__producer-panel .detail__producer-tag {
+  margin-bottom: 20px;
+}
+
+.detail__qa-panel {
+  text-align: center;
+  padding: 48px 0;
+}
+
+.detail__qa-panel .muted {
+  margin-bottom: 16px;
+  display: block;
+}
+
+.review-card { 
+  padding: 24px; 
+  border: 1px solid #E5E7EB; 
+  border-radius: 12px; 
+  margin-bottom: 16px; 
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.review__author { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  margin-bottom: 12px; 
+}
+
+.review__avatar { 
+  width: 36px; 
+  height: 36px; 
+  background: #E8F5E9; 
+  color: #1B5E20; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-weight: bold; 
+  font-size: 0.85rem; 
+}
+
+.figma-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #E8F5E9;
+  color: #2E7D32;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #C8E6C9;
+}
 /* ===== Tabs ===== */
 .tabs { display:flex; gap:4px; border-bottom:2px solid var(--border); margin-bottom:20px; }
 .tabs__btn { padding:12px 20px; background:none; border:none; font-weight:600; color:var(--text-muted); border-bottom:2px solid transparent; margin-bottom:-2px; cursor:pointer; }
@@ -1276,4 +1651,18 @@
   .auth__row { grid-template-columns:1fr; }
   .navbar__search { display:none; }
   .hero__title { font-size:2rem; }
+
+.detail__grid {
+    grid-template-columns: 1fr !important; 
+    gap: 24px !important;
+  }
+  
+  .detail__gallery {
+    position: static !important; /* Gasi sticky da slika ne bi bežala na skrolu */
+  }
+
+.detail__reviews-layout {
+    grid-template-columns: 1fr !important; 
+    gap: 24px !important;
+  }
 }
