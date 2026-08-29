@@ -21,6 +21,7 @@ export class Product implements IProduct {
   pakovanje?: string;
   berba?: string;
   rok?: string;
+  ratingBreakdown?: number[];
 
   constructor(data: IProduct) {
     Object.assign(this, data);

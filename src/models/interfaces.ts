@@ -14,14 +14,14 @@ export interface IProduct {
   id: number;
   name: string;
   category: Category;
-  price: number;        // RSD
-  discount?: number;    // 0..100
-  unit: string;         // kg, kom, l, g
+  price: number;
+  discount?: number; 
+  unit: string; 
   producerId: number;
   rating: number;
   ratingCount: number;
   soldCount: number;
-  image: string;        // emoji
+  image: string;
   description: string;
   inStock: boolean;
   certificate?: string;
@@ -29,6 +29,7 @@ export interface IProduct {
   pakovanje?: string;
   berba?: string;
   rok?: string;
+  ratingBreakdown?: number[];
 }
 
 export interface ICartItem {
