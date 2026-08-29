@@ -206,8 +206,7 @@
 .auth__hero-desc { font-size:.95rem; opacity:.9; line-height:1.5; max-width:380px; }
 .auth__hero-features { list-style:none; padding:0; margin:16px 0 0; display:flex; flex-direction:column; gap:10px; font-size:.9rem; }
 .auth__form-wrap { display:flex; align-items:center; justify-content:center; padding:48px 24px; }
-.auth__card { background:#fff; width:100%; max-width:420px; display:flex; flex-direction:column; gap:16px; }
-.auth_card--reg { max-width:560px; }
+.auth__card { background:#fff; width:100%; max-width:420px; display:flex; flex-direction:column; gap:16px; border:1.5px solid var(--border); border-radius:var(--radius-lg); padding:32px; box-shadow:var(--shadow-md, 0 4px 12px rgba(0,0,0,0.06)); }.auth_card--reg { max-width:560px; }
 .auth__title { font-size:1.8rem; margin:0; }
 .auth__sub { margin-top:-8px; }
 .auth__row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
@@ -220,6 +219,16 @@
 .auth__switch { text-align:center; font-size:.9rem; }
 .auth__switch a { color:var(--green); font-weight:600; }
 .auth__demo { text-align:center; font-size:.82rem; }
+.auth__card--wide { max-width:560px; }
+.auth__reg-header { display:flex; justify-content:space-between; align-items:center; font-weight:700; margin-bottom:8px; }
+.auth__reg-login-link { font-size:.85rem; font-weight:600; color:var(--green); text-decoration:none; }
+.auth__steps { display:flex; gap:16px; font-size:.85rem; color:var(--text-muted); margin-bottom:8px; }
+.auth__step--active { color:var(--green); font-weight:700; }
+.auth__strength { display:flex; gap:6px; margin-top:-8px; }
+.auth__strength-bar { flex:1; height:4px; border-radius:999px; background:var(--border); }
+.auth__strength-bar--filled { background:var(--green); }
+.auth--single { display:flex; justify-content:center; align-items:center; }
+.auth--single .auth__card { border:1.5px solid var(--border); border-radius:var(--radius-lg); padding:40px; box-shadow:var(--shadow-md, 0 4px 12px rgba(0,0,0,0.06)); max-width:640px;}
 /* ===== Profile ===== */
 .profile__head { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:24px; }
 .profile__avatar { width:64px; height:64px; border-radius:50%; background:var(--green); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.5rem; font-weight:700; }
