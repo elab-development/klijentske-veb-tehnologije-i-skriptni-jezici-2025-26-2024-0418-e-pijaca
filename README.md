@@ -13,9 +13,6 @@ moguće je pretraživati, filtrirati i naručiti kroz 4-koračni proces kupovine
 - CSS (dizajn tokeni iz Figma prototipa)
 - localStorage (korpa, prijava, izbor valute)
 
-## Spoljni API-ji
-1. **Fake Store API** — `https://fakestoreapi.com` (podrška za katalog proizvoda)
-2. **open.er-api.com** — kursna lista za konverziju cena RSD ⇄ EUR
 
 ## Funkcionalnosti
 - ✅ 7 stranica: Prijava, Registracija, Početna, Profil, Spisak proizvoda, Pojedinačni proizvod, Korpa
@@ -42,7 +39,6 @@ src/
 ├── hooks/        # useLocalStorage, useDebounce, useFetch
 ├── models/       # klase Product, Cart, User, Order + interfejsi
 ├── pages/        # 7 stranica aplikacije
-├── services/     # productService, currencyService (2 spoljna API-ja)
 └── styles/       # tokens.css, global.css, components.css, pages.css
 ```
 
