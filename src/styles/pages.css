@@ -1680,6 +1680,25 @@
   .auth__row { grid-template-columns:1fr; }
   .navbar__search { display:none; }
   .hero__title { font-size:2rem; }
+    .marketplace__filters{
+    width: 500px;
+  }
+  .marketplace__main{
+    width: 500px;
+  }
+  .detail__grid {
+    grid-template-columns: 1fr !important; 
+    gap: 24px !important;
+  }
+  
+  .detail__gallery {
+    position: static !important; /* Gasi sticky da slika ne bi bežala na skrolu */
+  }
+
+.detail__reviews-layout {
+    grid-template-columns: 1fr !important; 
+    gap: 24px !important;
+  }
 }
 
 @media (max-width: 540px) {
