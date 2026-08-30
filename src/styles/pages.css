@@ -1,5 +1,5 @@
 /* ===== Layout helpers ===== */
-.app { display:flex; flex-direction:column; min-height:100vh; }
+.app { display:grid; flex-direction:column; min-height:100vh; }
 .layout-main { flex:1; }
 .muted { color:var(--text-muted); }
 .section { max-width:var(--max-width); margin:0 auto; padding:32px 24px; }
@@ -1651,6 +1651,12 @@
   .auth__row { grid-template-columns:1fr; }
   .navbar__search { display:none; }
   .hero__title { font-size:2rem; }
+  .marketplace__filters{
+    width: 500px;
+  }
+  .marketplace__main{
+    width: 500px;
+  }
 
 .detail__grid {
     grid-template-columns: 1fr !important; 
