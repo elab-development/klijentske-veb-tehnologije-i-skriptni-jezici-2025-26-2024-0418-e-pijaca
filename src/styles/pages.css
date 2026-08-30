@@ -745,6 +745,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .figma-profile-page-title {
@@ -772,6 +773,7 @@
   font-size: 0.88rem;
   font-weight: 600;
   cursor: pointer;
+  white-space: nowrap;
   transition: background 0.15s;
 }
 
@@ -795,6 +797,7 @@
   flex-direction: column;
   gap: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  min-width: 0;
 }
 
 .figma-stat-number {
@@ -863,8 +866,8 @@
 .figma-data-row {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 12px 0;
+  gap: 6px;
+  padding: 14px 0;
   border-bottom: 1px solid #F3F4F6;
 }
 
@@ -880,12 +883,15 @@
 .figma-data-val {
   font-size: 0.95rem;
   color: #111827;
+  word-break: break-word;
 }
 
 .figma-data-val-with-badge {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .figma-green-verified-tag {
@@ -895,18 +901,20 @@
   color: #2E7D32;
   font-size: 0.72rem;
   font-weight: 700;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 999px;
+  flex-shrink: 0;
 }
 
 .figma-inline-input {
-  padding: 6px 10px;
+  padding: 8px 12px;
   border: 1px solid #D1D5DB;
   border-radius: 6px;
   font-size: 0.9rem;
   color: #111827;
   outline: none;
-  max-width: 320px;
+  width: 100%;
+  max-width: 360px;
 }
 
 .figma-inline-input:focus {
@@ -917,7 +925,7 @@
 .figma-orders-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .figma-order-row-item {
@@ -928,12 +936,15 @@
   background: #FAF9F5;
   border: 1px solid #ECEAE1;
   border-radius: 10px;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .figma-order-lead {
   display: flex;
   align-items: center;
   gap: 14px;
+  min-width: 200px;
 }
 
 .figma-order-box-icon {
@@ -946,6 +957,7 @@
   justify-content: center;
   font-size: 1.2rem;
   border: 1px solid #E5E7EB;
+  flex-shrink: 0;
 }
 
 .figma-order-info-text {
@@ -968,12 +980,14 @@
   display: flex;
   align-items: center;
   gap: 16px;
+  margin-left: auto;
 }
 
 .figma-order-total-price {
   font-size: 0.95rem;
   font-weight: 800;
   color: #111827;
+  white-space: nowrap;
 }
 
 .figma-status-pill {
@@ -981,6 +995,7 @@
   border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .figma-status-pill.status--delivering {
@@ -1645,30 +1660,16 @@
   .marketplace__inner { flex-direction:column; }
   .marketplace__filters { flex:1; width:100%; }
   .detail__grid { grid-template-columns:1fr; }
-  .cart__body { grid-template-columns:1fr; }
-  .profile__grid { grid-template-columns:1fr; }
+  .figma-cart-layout { grid-template-columns:1fr; }
+  .figma-profile-layout { grid-template-columns: 1fr; }
+  .figma-stats-grid { grid-template-columns: repeat(2, 1fr); }
   .confirm { grid-template-columns:1fr; }
   .auth__row { grid-template-columns:1fr; }
   .navbar__search { display:none; }
   .hero__title { font-size:2rem; }
-  .marketplace__filters{
-    width: 500px;
-  }
-  .marketplace__main{
-    width: 500px;
-  }
+}
 
-.detail__grid {
-    grid-template-columns: 1fr !important; 
-    gap: 24px !important;
-  }
-  
-  .detail__gallery {
-    position: static !important; /* Gasi sticky da slika ne bi bežala na skrolu */
-  }
-
-.detail__reviews-layout {
-    grid-template-columns: 1fr !important; 
-    gap: 24px !important;
-  }
+@media (max-width: 540px) {
+  .figma-stats-grid { grid-template-columns: 1fr; }
+  .figma-order-side-info { width: 100%; justify-content: space-between; margin-left: 0; }
 }
