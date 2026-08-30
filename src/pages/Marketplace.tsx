@@ -7,7 +7,7 @@ import FilterBar, { initialFilters, type FilterState } from '../components/Filte
 import Pagination from '../components/Pagination';
 import { useDebounce } from '../hooks/useDebounce';
 
-const PER_PAGE = 12; // Figma prikazuje 12 proizvoda po strani
+const PER_PAGE = 12; //12 proizvoda po strani
 type SortKey = 'popular' | 'price-asc' | 'price-desc' | 'rating';
 
 const effective = (p: { price: number; discount?: number }) =>
@@ -34,7 +34,6 @@ export default function Marketplace() {
     setDraft(f);
     setApplied(f);
     if (q != null) setSearch(q);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
   const filtered = useMemo(() => {
@@ -77,14 +76,12 @@ export default function Marketplace() {
     setSearch('');
   };
 
-  // Logika za prikazivanje brojeva u podnaslovu
   const currentStart = pageItems.length > 0 ? (page - 1) * PER_PAGE + 1 : 0;
   const currentEnd = Math.min(page * PER_PAGE, filtered.length);
   const pageTitle = applied.category !== 'Sve' ? `${applied.category} - sveža berba` : 'Svi proizvodi';
 
   return (
     <div className="marketplace">
-      {/* Gornji deo sa breadcrumbs i naslovom */}
       <div className="marketplace__top">
         <div className="breadcrumbs">
           <Link to="/">Početna</Link> &rsaquo; <Link to="/proizvodi">Proizvodi</Link> &rsaquo; <span>{applied.category !== 'Sve' ? applied.category : 'Svi proizvodi'}</span>
@@ -104,7 +101,6 @@ export default function Marketplace() {
               <option value="price-desc">Cena opadajuće</option>
               <option value="rating">Najbolje ocenjeno</option>
             </select>
-            {/* Opciono: dugmići za Grid/List view iz Figme */}
             <div className="view-toggles">
               <button className="view-btn is-active">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1H7V7H1V1ZM9 1H15V7H9V1ZM1 9H7V15H1V9ZM9 9H15V15H9V9Z"/></svg>

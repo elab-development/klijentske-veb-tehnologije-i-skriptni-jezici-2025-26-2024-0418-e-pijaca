@@ -12,7 +12,7 @@
 .grid { 
   display: grid; 
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-  gap: 32px; /* Usklađen gap između kartica na osnovu proporcija iz dizajna */
+  gap: 32px;
 }
 .empty { display:flex; flex-direction:column; align-items:center; gap:12px; padding:48px 24px; text-align:center; }
 .empty__emoji { font-size:3rem; }
@@ -61,7 +61,6 @@
 }
 .marketplace__inner { 
   display: flex; 
-  /* Figma: gap između filtera i proizvoda 32px, padding 64px horizontalno i vertikalno */
   gap: 32px; 
   padding: 64px;
   max-width: 1440px;
@@ -290,7 +289,7 @@
   color: #6B7280;
 }
 
-/* Cena - svetlozeleni boks sa finom ivicom */
+/* Cena - svetlozeleni boks */
 .detail__price-box { 
   background: #E8F5E9; 
   padding: 20px; 
@@ -347,7 +346,6 @@
   font-size: 1rem;
 }
 
-/* Tanka linija i siva slova za tabelu specifikacija */
 .detail__specs-table { 
   list-style: none; 
   padding: 0; 
@@ -406,7 +404,7 @@
   background: #F3F4F6;
 }
 
-/* Dostava info sekcija sa tankim razdvajačem */
+
 .detail__delivery-info { 
   display: flex; 
   flex-direction: column; 
@@ -1692,7 +1690,7 @@
   }
   
   .detail__gallery {
-    position: static !important; /* Gasi sticky da slika ne bi bežala na skrolu */
+    position: static !important;
   }
 
 .detail__reviews-layout {

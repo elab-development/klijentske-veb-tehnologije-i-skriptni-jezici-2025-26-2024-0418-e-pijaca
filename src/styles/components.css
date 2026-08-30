@@ -68,7 +68,6 @@
   border-bottom: 1px solid #E5DCC9; 
 }
 .navbar__inner { 
-  /* Figma: 1440px širina, 72px visina, 64px horizontalni padding */
   max-width: 1440px; 
   height: 72px;
   margin: 0 auto; 
@@ -102,7 +101,6 @@
 /* ===== Product card ===== */
 .pcard { 
   background: #fff; 
-  /* Figma: border 1px #E5DCC9, radijus 14px, visina 380px */
   border: 1px solid #E5DCC9; 
   border-radius: 14px; 
   height: 380px; 
@@ -130,7 +128,6 @@
 /* ===== Filter bar ===== */
 .filter { 
   background: #fff; 
-  /* Figma: border 1px #E5DCC9, radijus 14px, padding 24px, gap 24px */
   border: 1px solid #E5DCC9; 
   border-radius: 14px; 
   padding: 24px; 
@@ -139,7 +136,7 @@
   gap: 24px; 
   height: fit-content; 
   position: sticky; 
-  top: 100px; /* Malo spušteno zbog visine navbar-a */
+  top: 100px;
 }
 .filter__head {
   display: flex;

@@ -13,8 +13,6 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { addItem } = useCart();
   const { format } = useCurrency();
 
-  // Da bi kartica izgledala kao u Figmi, prikazujemo pravu sliku.
-  // Ako u bazi imaš emodžije, koristićemo Unsplash placeholder čisto radi vizuelnog poklapanja.
   
 
   return (
@@ -22,7 +20,6 @@ export default function ProductCard({ product }: ProductCardProps) {
       <Link to={`/proizvod/${p.id}`} className="pcard__media">
         <img src={p.image} alt={p.name} className="pcard__img" />
         
-        {/* Figma: Bedževi na slici */}
         <div className="pcard__badges">
           {p.hasDiscount() && <span className="badge badge--red">-{p.discount}%</span>}
           {p.certificate?.includes('BIO') && <span className="badge badge--green">BIO</span>}
@@ -30,7 +27,6 @@ export default function ProductCard({ product }: ProductCardProps) {
       </Link>
       
       <div className="pcard__body">
-        {/* Figma prikazuje ime i region proizvođača, npr. Voćnjak Mihajlović - Sremski Karlovci */}
         <span className="pcard__producer-info">Poljoprivredno gazdinstvo · Srbija</span>
         
         <h3 className="pcard__name">
