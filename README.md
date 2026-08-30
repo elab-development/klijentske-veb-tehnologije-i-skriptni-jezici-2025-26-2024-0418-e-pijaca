@@ -1,9 +1,9 @@
 # 🌿 e-Pijaca — web aplikacija za poručivanje domaćih proizvoda
 
 Seminarski rad iz predmeta **Klijentske veb tehnologije** (FON, Departman za e-biznis).
-Tematska web aplikacija — elektronska pijaca koja povezuje lokalne proizvođače
+Tematska web aplikacija - elektronska pijaca koja povezuje lokalne proizvođače
 sa kupcima. Sveže proizvode (voće, povrće, mlečni proizvodi, med, jaja, začine)
-moguće je pretraživati, filtrirati i naručiti kroz 4-koračni proces kupovine.
+moguće je pretraživati, filtrirati i naručiti.
 
 > *„Sveže sa pijace, direktno do vrata.“*
 
