@@ -18,13 +18,25 @@
 .empty__emoji { font-size:3rem; }
 
 /* ===== Home: hero ===== */
-.home .hero { max-width:var(--max-width); margin:0 auto; padding:48px 24px; display:flex; align-items:center; gap:48px; flex-wrap:wrap; }
-.hero__text { flex:1; min-width:280px; }
-.hero__eyebrow { color:var(--green); font-weight:700; }
+.home .hero { max-width:var(--max-width); margin:0 auto; padding:32px 24px 48px; }
+.hero { background:#ecf2fd; color:var(--text-body); border-radius:var(--radius-lg); padding:48px 0; display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:start; }
+.hero__cta .btn--outline { background:#fff; }
+.hero__text { min-width:280px; }
+.hero__eyebrow { color:var(--green); opacity:1; font-weight:700; }
 .hero__title { font-size:2.6rem; line-height:1.15; margin:12px 0; color:var(--text-heading); }
-.hero__sub { color:var(--text-body); font-size:1.05rem; max-width:520px; }
+.hero__sub { color:var(--text-body); opacity:1; font-size:1.05rem; max-width:520px; }
 .hero__cta { display:flex; gap:12px; margin-top:24px; flex-wrap:wrap; }
-.hero__art { font-size:7rem; }
+.hero__stats { display:flex; gap:32px; margin-top:32px; }
+.hero__stat { display:flex; flex-direction:column; }
+.hero__stat strong { font-size:1.3rem; color:var(--green); }
+.hero__stat span { font-size:.85rem; color:var(--text-muted); }
+.hero__card { background:#fff; color:var(--text-body); border-radius:var(--radius-lg); padding:24px; border:1px solid var(--border); box-shadow:var(--shadow-md, 0 4px 12px rgba(0,0,0,0.06)); }
+.hero__card-label { color:var(--green); font-weight:700; font-size:.85rem; }
+.hero__card-title { font-size:1.1rem; margin:8px 0 16px; color:var(--text-heading); }
+.hero__card-list { list-style:none; padding:0; margin:0 0 16px; display:flex; flex-direction:column; gap:8px; font-size:.9rem; color:var(--text-body); }
+.hero__card-list li::before { content:"✓ "; color:var(--green); }
+.hero__card-footer { display:flex; justify-content:space-between; align-items:center; }
+.hero__card-price { font-size:1.2rem; font-weight:700; color:var(--text-heading); }
 
 /* ===== Categories ===== */
 .catgrid { display:grid; grid-template-columns:repeat(auto-fill, minmax(140px,1fr)); gap:16px; }
@@ -574,6 +586,7 @@
 
 /* ===== Auth (Login/Register) ===== */
 .auth { display:grid; grid-template-columns:2fr 3fr; min-height:100vh; }
+
 .auth__hero { background:var(--green); color:#fff; padding:64px 56px; display:flex; flex-direction:column; justify-content:center; gap:24px; }
 .auth__hero h2, .auth__hero p, .auth__hero li, .auth__hero div { color:#fff; }
 .auth__hero-logo { font-size:1.3rem; font-weight:700; }

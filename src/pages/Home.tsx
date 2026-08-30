@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllProducts, fetchExternalProducts } from '../services/productService';
+import { getAllProducts } from '../services/productService';
 import { producers, categories } from '../data/products';
 import { useCurrency } from '../context/CurrencyContext';
 import ProductCard from '../components/ProductCard';
 import Button from '../components/Button';
-import type { IProduct } from '../models/interfaces';
+
 
 export default function Home() {
   const { format, currency, setCurrency, rates } = useCurrency();
@@ -13,43 +13,65 @@ export default function Home() {
   const featured = products.filter((p) => p.rating >= 4.7).slice(0, 4);
   const seasonal = products.filter((p) => p.discount).slice(0, 3);
 
-  const [external, setExternal] = useState<IProduct[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchExternalProducts()
-      .then((list) => setExternal(list))
-      .finally(() => setLoading(false));
-  }, []);
+  
 
   return (
     <div className="home">
       <section className="hero">
-        <div className="hero__text">
-          <span className="hero__eyebrow">🌿 Pravo iz bašte na vaš sto</span>
-          <h1 className="hero__title">Sveže sa pijace, direktno do vrata.</h1>
-          <p className="hero__sub">
-            Naručite domaće proizvode od proverenih srpskih proizvođača. Bez posrednika, sa ukusom prave seoske bašte.
-          </p>
-          <div className="hero__cta">
-            <Link to="/proizvodi"><Button size="lg">Pogledaj ponudu</Button></Link>
-            <Link to="/registracija"><Button variant="outline" size="lg">Postani član</Button></Link>
-          </div>
-        </div>
-        <div className="hero__art" aria-hidden="true">🧺</div>
-      </section>
+  <div className="hero__text">
+    <h1 className="hero__title">Pravo iz bašte na vaš sto.</h1>
+<p className="hero__sub">
+  Povežite se direktno sa proizvođačima iz Srbije. Bez posrednika, bez preprodaje - samo sveže, sezonsko i dokazano domaće.
+</p>
+    <div className="hero__cta">
+      <Link to="/proizvodi"><Button size="lg">Pogledaj ponudu</Button></Link>
+      <Link to="/registracija"><Button variant="outline" size="lg">Postani prodavac</Button></Link>
+    </div>
+    <div className="hero__stats">
+      <div className="hero__stat">
+        <strong>420+</strong>
+        <span>proizvođača</span>
+      </div>
+      <div className="hero__stat">
+        <strong>12.000+</strong>
+        <span>zadovoljnih kupaca</span>
+      </div>
+      <div className="hero__stat">
+        <strong>4.9 ★</strong>
+        <span>prosečna ocena</span>
+      </div>
+    </div>
+  </div>
+  <div className="hero__card">
+    <span className="hero__card-label">Korpa nedelje</span>
+    <h3 className="hero__card-title">Sezonska korpa - 8 proizvoda</h3>
+    <ul className="hero__card-list">
+      <li>Paradajz volovsko srce</li>
+      <li>Krastavac mali</li>
+      <li>Sir mladi domaći</li>
+      <li>Med od bagrema</li>
+      <li>Maline sveže</li>
+    </ul>
+    <div className="hero__card-footer">
+      <span className="hero__card-price">2.890 RSD</span>
+      <Button size="md">Dodaj u korpu</Button>
+    </div>
+  </div>
+</section>
 
       <section className="section">
-        <h2 className="section__title">Kupuj po kategorijama</h2>
-        <div className="catgrid">
-          {categories.map((c) => (
-            <Link key={c.key} to={`/proizvodi?kategorija=${encodeURIComponent(c.key)}`} className="catcard">
-              <span className="catcard__emoji" aria-hidden="true">{c.emoji}</span>
-              <span className="catcard__label">{c.label}</span>
-            </Link>
-          ))}
-        </div>
-      </section>
+  <div className="section__head">
+    <h2 className="section__title">Pretraži po kategoriji</h2>
+    <Link to="/proizvodi" className="section__hint">Vidi sve →</Link>
+  </div>
+  <div className="catgrid">
+    {categories.map((c) => (
+      <Link key={c.key} to={`/proizvodi?kategorija=${encodeURIComponent(c.key)}`} className="catcard">
+        <span className="catcard__label">{c.label}</span>
+      </Link>
+    ))}
+  </div>
+</section>
 
       <section className="section">
         <div className="section__head">
@@ -80,44 +102,27 @@ export default function Home() {
       )}
 
       <section className="section">
-        <h2 className="section__title">Naši proizvođači</h2>
-        <div className="producergrid">
-          {producers.map((pr) => (
-            <div key={pr.id} className="producercard">
-              <div className="producercard__head">
-                <span className="producercard__emoji" aria-hidden="true">👨‍🌾</span>
-                <div>
-                  <h3>{pr.name}</h3>
-                  <span className="muted">{pr.location} · {pr.region}</span>
-                </div>
-              </div>
-              <p className="muted">{pr.products}</p>
-              <div className="producercard__stats">
-                <span>★ {pr.rating}</span>
-                <span>{pr.sales}+ porudžbina</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="section">
-        <h2 className="section__title">
-          Preporuke sa spoljnog kataloga <span className="muted">(live API · fakestoreapi.com)</span>
-        </h2>
-        {loading ? (
-          <p className="muted">Učitavanje…</p>
-        ) : external.length === 0 ? (
-          <p className="muted">Spoljni API trenutno nedostupan — prikazujemo samo lokalni katalog.</p>
-        ) : (
-          <div className="grid">
-            {external.map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
+  <h2 className="section__title">Naši proizvođači</h2>
+  <div className="producergrid">
+    {producers.map((pr, i) => (
+      <div key={pr.id} className="producercard">
+        <div className="producercard__head">
+         <span className="producercard__avatar">
+  {pr.name.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase()}
+</span>
+          <div>
+            <h3>{pr.name}</h3>
+            <span className="muted">📍 {pr.location} · {pr.region}</span>
           </div>
-        )}
-        {rates && <p className="muted">Live kurs: 1 € = {rates.RSD.toFixed(2)} RSD · format primera: {format(420)}</p>}
-      </section>
+        </div>
+        <p className="muted">{pr.products}</p>
+        <div className="producercard__stats">
+          <span>★ {pr.rating} · {pr.sales}+ prodaja</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
     </div>
   );
 }
